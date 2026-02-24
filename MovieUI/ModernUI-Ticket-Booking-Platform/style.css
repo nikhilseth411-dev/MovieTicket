@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Encode+Sans:wght@100..900&family=Syne:wght@400..800&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Encode+Sans:wdth,wght@125,100..900&family=Italiana&family=Syne:wght@400..800&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Encode+Sans:wdth,wght@125,100..900&family=Italiana&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&family=Yeseva+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Encode Sans', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+
+.header {
+    width: 100%;
+    background-color: #040404;
+    padding: 10px 0;
+}
+
+.header ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.header ul li {
+    margin: 0 15px;
+}
+
+.header ul li img {
+    width: 140px;
+}
+
+.header ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-family: "Syne", serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    transition: color 0.3s, box-shadow 0.3s;
+}
+
+.header ul li a:hover {
+    color: red;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(255, 0, 0);
+}
+
+
+.section1 {
+    background-image: url('https://images5.alphacoders.com/137/thumb-1920-1372321.jpeg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.section1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.section1 .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 90%;
+    margin: auto;
+    text-align: left;
+}
+
+.section1 .content img {
+    max-width: 40%;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.section1 .content img:hover {
+    transform: scale(1.09);
+}
+
+.text {
+    max-width: 600px;
+}
+
+.text h2 {
+    font-weight: bold;
+    font-size: 56px;
+    font-family: 'Syne', serif;
+}
+
+.text p {
+    font-size: 38px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+
+#btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border-radius: 15px;
+    background-color: rgb(255, 25, 0);
+    font-size: 20px;
+    font-family: 'Yeseva One', monospace;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#btn:hover {
+    transform: scale(1.09);
+    color: black;
+    background-color: white;
+}
+
+
+.section2 {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.section2 h2 {
+    font-family: 'Syne', serif;
+    color: aliceblue;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section2 .content {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.section2 .dabba {
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 17px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+
+
+.section2 .dabba img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.section2 .dabba p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+
+.section2 .dabba img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.section2 .dabba p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#one:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 12px rgb(255, 255, 255);
+}
+
+#two:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(208, 0, 255);
+}
+
+#three:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(0, 4, 255);
+}
+
+#four:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(255, 0, 0);
+}
+
+#five:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(255, 51, 136);
+}
+
+@media (max-width: 1024px) {  
+    .section1 .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section1 .content img {
+        max-width: 60%;
+    }
+
+    .text {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .section2 .content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {  
+    .header ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header ul li {
+        margin: 10px 0;
+    }
+
+    .section1 {
+        height: auto;
+        padding: 50px 0;
+    }
+
+    .section1 .content img {
+        max-width: 80%;
+    }
+
+    .text h2 {
+        font-size: 42px;
+    }
+
+    .text p {
+        font-size: 24px;
+    }
+
+    .section2 h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {  
+    .text h2 {
+        font-size: 36px;
+    }
+
+    .text p {
+        font-size: 20px;
+    }
+
+    #btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+.section3 {
+    background: url('https://www.halton.com/app/uploads/2020/05/Concert_hall_rock_concert.jpg');
+    background-size: cover; 
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.section3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.section3 h2 {
+    font-family: 'Syne', serif;
+    color: aliceblue;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section3 .concert {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.section3 .dabba {
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 17px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+
+
+.section3 .dabba img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.section3 .dabba p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+
+.section3 .dabba img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.section3 .dabba p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#six:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 12px rosybrown;
+}
+
+#seven:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(8, 0, 255);
+}
+
+#eight:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(255, 0, 0);
+}
+
+#nine:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(0, 225, 255);
+}
+
+#ten:hover {
+    transform: scale(1.25);
+    box-shadow: 0 8px 10px rgb(255, 51, 136);
+}
+
+@media (max-width: 1024px) {  
+    .section3 .concert {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .section3 .dabba {
+        width: 100%;
+    }
+    
+    .section3 .dabba img {
+        max-width: 60%;
+    }
+
+    .section3 .dabba p {
+        font-size: 16px;
+    }
+
+    .section3 h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media (max-width: 768px) {  
+    .section3 h2 {
+        font-size: 24px;
+    }
+
+    .section3 .dabba p {
+        font-size: 14px;
+    }
+
+    .section3 .dabba img {
+        max-width: 80%;
+    }
+}

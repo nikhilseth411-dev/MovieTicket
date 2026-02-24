@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat & Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: #FFD700;
+        }
+
+        #seats-container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .seat-select {
+            display: none;
+        }
+
+        .seat-select + label {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            background: #444;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .seat-select:checked + label {
+            background: #FFD700;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        .seat-select:disabled + label {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        .booking-details {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #confirm-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #confirm-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Seat & Payment Confirmation</h1>
+        <div id="seats-container">
+            <!-- Seats dynamically generated using JavaScript -->
+        </div>
+        <div class="booking-details">
+            <p>Movie: <span id="movie-title">Loading...</span></p>
+            <p>Seats Selected: <span id="selected-seats">None</span></p>
+            <p>Total Amount: <span id="total-amount">₹0</span></p>
+        </div>
+        <button id="confirm-btn">Confirm Booking</button>
+    </div>
+
+    <script>
+        // Get movie name from URL
+        function getQueryParam(param) { // how does this function work? : It takes a parameter 'param' which is the query parameter to be extracted from the URL and returns the value of that query parameter after decoding it using the URLSearchParams API. give a simple example of how this function works: If the URL is "movieseatbooking.html?movie=Inception", calling getQueryParam('movie') will return "Inception". 
+            let urlParams = new URLSearchParams(window.location.search); // what does this do? : It creates a new URLSearchParams object from the query string in the URL. what are the parameters it takes? : It takes the query string from the URL as a string. give a simple example to explain easily to anyone: If the URL is "movieseatbooking.html?movie=Inception", calling new URLSearchParams(window.location.search) will create an object with the query parameter 'movie' and its value 'Inception'. what does window.location.search do? : It returns the query string part of the URL.
+            // what does the following line do? : It returns the value of the specified query parameter and decodes it. what does it return? : It returns the value of the specified query parameter.    
+            // 2.  
+            return urlParams.get(param); // what does this do? : It returns the value of the specified query parameter and decodes it. what does it return? : It returns the value of the specified query parameter.
+            return urlParams.get(param); // Return the value of the specified query parameter and decode it 
+        }
+
+        let movieTitle = getQueryParam('movie') || 'Unknown Movie';
+        document.getElementById('movie-title').innerText = decodeURIComponent(movieTitle);
+
+        const seatsContainer = document.getElementById("seats-container");
+        for (let i = 1; i <= 50; i++) {
+            let seatId = `A${i}`;
+            seatsContainer.innerHTML += `
+                <input type="checkbox" id="${seatId}" class="seat-select">
+                <label for="${seatId}">${seatId}</label>
+            `;
+        }
+
+        
+        function updateSelectedSeats() {
+            const selectedSeats = Array.from(document.querySelectorAll('.seat-select:checked'))
+                                      .map(seat => seat.nextElementSibling.innerText)
+                                      .join(', ') || 'None';
+            document.getElementById('selected-seats').innerText = selectedSeats;
+            document.getElementById('total-amount').innerText = `₹${selectedSeats.split(', ').length * 100}`;
+        }
+
+        document.querySelectorAll('.seat-select').forEach(seat => {
+            seat.addEventListener('change', updateSelectedSeats);
+        });
+
+        document.getElementById('confirm-btn').addEventListener('click', function() {
+            const selectedSeats = document.getElementById('selected-seats').innerText;
+            const totalAmount = document.getElementById('total-amount').innerText;
+
+            if (selectedSeats === "None") {
+                alert("Please select at least one seat before confirming your booking.");
+                return;
+            }
+            alert(`🎉 Booking Confirmed! \n\nMovie: ${movieTitle}\nSeats: ${selectedSeats}\nTotal Paid: ${totalAmount}`);
+            
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

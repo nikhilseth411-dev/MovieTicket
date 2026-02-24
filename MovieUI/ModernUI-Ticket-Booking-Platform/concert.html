@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concert Ticket Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: #FFD700;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .booking-details {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #confirm-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #confirm-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Concert Ticket Booking</h1>
+        <form id="booking-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" required>
+
+            <label for="tickets">Number of Tickets</label>
+            <select id="tickets" required>
+                <option value="1">1 Ticket - ₹500</option>
+                <option value="2">2 Tickets - ₹1000</option>
+                <option value="3">3 Tickets - ₹1500</option>
+                <option value="4">4 Tickets - ₹2000</option>
+                <option value="5">5 Tickets - ₹2500</option>
+            </select>
+
+            <div class="booking-details">
+                <p>Concert: <span id="concert-name">Live Concert</span></p>
+                <p>Total Amount: <span id="total-amount">₹500</span></p>
+            </div>
+            <button type="submit" id="confirm-btn">Confirm Booking</button>
+        </form>
+    </div>
+
+    <script>
+        // Get concert name from URL (if provided)
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        let concertTitle = getQueryParam('concert') || 'Live Concert';
+        document.getElementById('concert-name').innerText = decodeURIComponent(concertTitle);
+
+        // Update total price based on ticket selection
+        document.getElementById('tickets').addEventListener('change', function() {
+            document.getElementById('total-amount').innerText = `₹${this.value * 500}`;
+        });
+
+        // Form submission event
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const ticketCount = document.getElementById('tickets').value;
+            const totalAmount = document.getElementById('total-amount').innerText;
+
+            alert(`🎵 Booking Confirmed! \n\nConcert: ${concertTitle}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nTickets: ${ticketCount}\nTotal Paid: ${totalAmount}`);
+            
+            // Redirect to homepage after confirmation
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
